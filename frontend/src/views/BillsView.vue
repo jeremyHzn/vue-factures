@@ -55,8 +55,12 @@ export default {
       loading: 'loading'
     })
   },
-  async mounted() {
-    await this.getBills()
+  created() {
+    this.$watch(
+      () => this.$route.param.id,
+      this.getBills(),
+      { immediate: true }
+    )
   },
   methods: {
     ...mapActions(useBillStore, {
@@ -64,12 +68,5 @@ export default {
       getBills: 'getItems'
     })
   },
-  watch: {
-    $router(newVal) {
-      if (newVal == { name: 'bills' }) {
-        this.getBills()
-      }
-    }
-  }
 }
 </script>
