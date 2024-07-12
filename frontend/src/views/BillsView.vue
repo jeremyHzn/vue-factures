@@ -56,11 +56,10 @@ export default {
     })
   },
   created() {
-    this.$watch(
-      () => this.$route.param.id,
-      this.getBills(),
-      { immediate: true }
-    )
+    this.$
+  },
+  async mounted() {
+    await this.getBills()
   },
   methods: {
     ...mapActions(useBillStore, {
@@ -68,5 +67,6 @@ export default {
       getBills: 'getItems'
     })
   },
+ 
 }
 </script>
