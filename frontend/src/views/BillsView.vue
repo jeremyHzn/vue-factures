@@ -63,6 +63,13 @@ export default {
       deleteBill: 'deleteItem',
       getBills: 'getItems'
     })
+  },
+  watch: {
+    $router(newVal) {
+      if (newVal == { name: 'bills' }) {
+        this.getBills()
+      }
+    }
   }
 }
 </script>

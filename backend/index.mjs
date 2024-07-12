@@ -5,7 +5,7 @@ import express from 'express'
 
 // ici on importe les routes déclarées dans le fichiers routes/bill.mjs
 import { router as billRoutes } from './routes/bill.mjs'
-
+import { router as clientRoutes } from './routes/client.mjs'
 // configuration du server
 // ------------------------
 const app = express()
@@ -37,7 +37,7 @@ app.get('/uploadfile', uploadFile, (req, res) => {
 // ici on externalise toutes les routes qui commencent par /bills dans un fichier que l'on importe comme billRouter
 // ici, les routes GET /bills, GET /bills/:id, PATCH /bills/:id, POST /bills, DELETE /bills/:id ... seront gérées par le fichier routes/bill.mjs
 app.use('/bills', billRoutes)
-
+app.use('/clients', clientRoutes)
 
 // lancement du serveur
 // ------------------------

@@ -83,8 +83,6 @@ export const useBillStore = defineStore('bill', {
       this.loading = true
       try {
         const response = await this.$http.delete('/bills/' + id)
-        // ici on raffraichit la liste des factures après modification (delete)
-        await this.getItems()
         console.log(response.data)
         this.loading = false
       } catch (error) {
