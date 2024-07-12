@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/bills',
       name: 'bills',
-      component: () => import('../views/BillsView.vue')
+      component: () => import('../views/Bill/MainView.vue')
     },
     {
       path: '/bill/',
@@ -25,7 +25,23 @@ const router = createRouter({
       path: '/bill/:id',
       props: true,
       name: 'edit-bill',
-      component: () => import('../views/BillCreateEditView.vue')
+      component: () => import('../views/Bill/CreateEditView.vue')
+    },
+    {
+      path: '/clients',
+      name: 'clients',
+      component: () => import('../views/Client/MainView.vue')
+    },
+    {
+      path: '/client/',
+      name: 'create-client',
+      redirect: '/client/new'
+    },
+    {
+      path: '/client/:id',
+      props: true,
+      name: 'edit-client',
+      component: () => import('../views/Client/CreateEditView.vue')
     },
     {
       path: '/about',

@@ -52,21 +52,27 @@ export default {
   computed: {
     ...mapState(useBillStore, {
       bills: 'items',
-      loading: 'loading'
+      loading: 'loading',
+      clients: 'items',
     })
-  },
-  created() {
-    this.$
   },
   async mounted() {
     await this.getBills()
+    await this.getClients()
   },
   methods: {
     ...mapActions(useBillStore, {
       deleteBill: 'deleteItem',
-      getBills: 'getItems'
+      getBills: 'getItems',
+      getClients: 'getItems'
     })
   },
- 
+  watch: {
+    $router(newVal) {
+      if (newVal == { name: 'bills' }) {
+        this.getBills()
+      }
+    }
+  }
 }
 </script>

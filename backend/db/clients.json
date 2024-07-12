@@ -1,20 +1,32 @@
 [
-    {
-      "idclient": 1,
-      "firstName": "Marc",
-      "lastName": "Scout",
-      "companyName": "Lumon Industries"
-    },
-    {
-      "idclient": 2,
-      "firstName": "Harry",
-      "lastName": "Potter",
-      "companyName": "Poudlard & Co."
-    },
-    {
-      "idclient": 3,
-      "firstName": "Luc",
-      "lastName": "Skywalker",
-      "companyName": "Ordre des Jedi"
-    }
-  ]
+  {
+    "id": 2,
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "function": "CFO",
+    "tel": "06 12 34 56 78",
+    "email": "jean.dupont@mail.fr",
+    "companyName": "Lumon Industries",
+    "addr1": "1 rue de la Paix",
+    "addr2": "",
+    "zip": "75000",
+    "city": "Paris",
+    "country": "France",
+    "createdAt": "2021-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "firstName": "Paul",
+    "lastName": "Durand",
+    "function": "CTO",
+    "tel": "06 12 34 56 78",
+    "email": "paul.durand@mail.fr",
+    "companyName": "Lumon Industries",
+    "addr1": "1 rue de la Paix",
+    "addr2": "",
+    "zip": "75000",
+    "city": "Paris",
+    "country": "France",
+    "createdAt": "2021-01-01T00:00:00.000Z"
+  }
+]

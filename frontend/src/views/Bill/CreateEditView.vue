@@ -281,8 +281,8 @@
 <script>
 import TableList from '@/components/tables/TableList.vue'
 import { billPrestationInterface } from '@/interfaces/bill'
-import { clients } from '@/seeds/clients.js'
 import { useBillStore } from '@/stores/bill'
+import { useClientStore } from '@/stores/client'
 import { mapActions, mapState, mapWritableState } from 'pinia'
 export default {
   components: {
@@ -296,28 +296,26 @@ export default {
   },
   data() {
     return {
-      clients,
       error: false
     }
-  },
-  mounted() {
-    // avant de monter le composant de la vue, on charge les données de la facture à éditer
-    this.setBill(this.id)
   },
   computed: {
     ...mapState(useBillStore, {
       loading: 'loading'
     }),
+    ...mapState(useClientStore, {
+      clients: 'items'
+    }),
     // le formulaire local 'bill' est mappé sur la donnée du store 'item'
     // attention, pour pouvoir modifier les données d'un état du store (stae), il faut utiliser mpaWritableState plutôt que mapState (qui est pour la lecture seule)
     ...mapWritableState(useBillStore, {
-      bill: 'item'
+      bill: 'item',
     }),
     // ici on a une computed classique
     isNewBill() {
       return this.id === 'new'
     },
-
+    
     formInvalid() {
       return (
         !this.bill ||
@@ -337,6 +335,12 @@ export default {
       }
     }
   },
+  mounted() {
+    // avant de monter le composant de la vue, on charge les données de la facture à éditer
+    this.setBill(this.id)
+    // list des clients
+    this.getClients()
+  },
   methods: {
     // pour pouvoir appeler une action du store, il faut l'importer et ici on lui donne un nom local différent 'setBill'
     ...mapActions(useBillStore, {
@@ -345,7 +349,9 @@ export default {
       createBill: 'createItem',
       deleteBill: 'deleteItem'
     }),
-
+    ...mapActions(useClientStore, {
+      getClients: 'getItems'
+    }),
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
       this.bill.prestations.splice(index + 1, 0, { ...billPrestationInterface })

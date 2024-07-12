@@ -1,3 +1,4 @@
+import { clientInterface } from './client'
 const billPrestationInterface = {
   id: Date.now() + 1,
   description: 'Exemple de prestation',
@@ -10,12 +11,7 @@ const billInterface = {
   billnum: '',
   description: '',
   date: new Date().toISOString().slice(0, 10),
-  client: {
-    idclient: '',
-    firstName: '',
-    lastName: '',
-    companyName: ''
-  },
+  client: { ...clientInterface },
   prestations: [{ ...billPrestationInterface }],
   discount: 0.0,
   paid: 0.0,
