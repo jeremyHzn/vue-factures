@@ -56,8 +56,7 @@ export const useClientStore = defineStore('client', {
     async updateItem(form) {
       this.loading = true
       try {
-        const response = await this.$http.patch('/clients/' + form.id, form)
-        console.log(response.data)
+        await this.$http.patch('/clients/' + form.id, form)
         await this.getItems()
 
         this.loading = false
@@ -71,8 +70,7 @@ export const useClientStore = defineStore('client', {
     async createItem(form) {
       this.loading = true
       try {
-        const response = await this.$http.post('/clients', form)
-        console.log(response.data)
+        await this.$http.post('/clients', form)
         // this.item = { ...response.data }
         this.loading = false
         await this.getItems()
@@ -87,8 +85,7 @@ export const useClientStore = defineStore('client', {
     async deleteItem(id) {
       this.loading = true
       try {
-        const response = await this.$http.delete('/clients/' + id)
-        console.log(response.data)
+        await this.$http.delete('/clients/' + id)
         this.loading = false
         await this.getItems()
       } catch (error) {

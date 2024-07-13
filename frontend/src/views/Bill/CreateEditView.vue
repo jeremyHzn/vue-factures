@@ -389,10 +389,8 @@ export default {
         this.error = false
         // on appelle la méthode de sauvegarde de la donnée du store
         if (this.isNewBill) {
-          console.log('create', this.bill)
           this.createBill(this.bill)
         } else {
-          console.log('update', this.bill)
           this.updateBill(this.bill)
         }
         // on revient sur la page précédente

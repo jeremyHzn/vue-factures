@@ -116,14 +116,14 @@
           <div class="form-floating mb-3">
             <input
               type="text"
-              name="firstName"
-              id="firstName"
-              v-model="client.firstName"
+              name="addr1"
+              id="addr1"
+              v-model="client.addr1"
               class="form-control"
               placeholder="Facture N°"
-              :class="{ 'is-invalid': !client.firstName }"
+              :class="{ 'is-invalid': !client.addr1 }"
             />
-            <label for="firstName" class="form-label">Prénom</label>
+            <label for="addr1" class="form-label">Adresse 1</label>
           </div>
         </div>
       </div>
@@ -132,14 +132,14 @@
           <div class="form-floating mb-3">
             <input
               type="text"
-              name="firstName"
-              id="firstName"
-              v-model="client.firstName"
+              name="addr2"
+              id="addr2"
+              v-model="client.addr2"
               class="form-control"
               placeholder="Facture N°"
-              :class="{ 'is-invalid': !client.firstName }"
+              :class="{ 'is-invalid': !client.addr2 }"
             />
-            <label for="firstName" class="form-label">Prénom</label>
+            <label for="addr2" class="form-label">Adresse 2</label>
           </div>
         </div>
       </div>
@@ -148,28 +148,28 @@
           <div class="form-floating mb-3">
             <input
               type="text"
-              name="firstName"
-              id="firstName"
-              v-model="client.firstName"
+              name="zip"
+              id="zip"
+              v-model="client.zip"
               class="form-control"
               placeholder="Facture N°"
-              :class="{ 'is-invalid': !client.firstName }"
+              :class="{ 'is-invalid': !client.zip }"
             />
-            <label for="firstName" class="form-label">Prénom</label>
+            <label for="zip" class="form-label">Code postal</label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-floating mb-3">
             <input
               type="text"
-              name="lastName"
-              id="lastName"
-              v-model="client.lastName"
+              name="city"
+              id="city"
+              v-model="client.city"
               class="form-control"
               placeholder="Facture N°"
-              :class="{ 'is-invalid': !client.lastName }"
+              :class="{ 'is-invalid': !client.city }"
             />
-            <label for="lastName" class="form-label">Nom</label>
+            <label for="city" class="form-label">Ville</label>
           </div>
         </div>
       </div>
@@ -178,14 +178,14 @@
           <div class="form-floating mb-3">
             <input
               type="text"
-              name="firstName"
-              id="firstName"
-              v-model="client.firstName"
+              name="country"
+              id="country"
+              v-model="client.country"
               class="form-control"
               placeholder="Facture N°"
-              :class="{ 'is-invalid': !client.firstName }"
+              :class="{ 'is-invalid': !client.country }"
             />
-            <label for="firstName" class="form-label">Prénom</label>
+            <label for="country" class="form-label">Pays</label>
           </div>
         </div>
 
@@ -251,7 +251,10 @@ export default {
         !this.client ||
         !this.client.firstName ||
         !this.client.companyName ||
-        !this.client.createdAt
+        !this.client.addr1 ||
+        !this.client.zip ||
+        !this.client.city ||
+        !this.client.country
       )
     },
     totalRow() {
@@ -286,10 +289,8 @@ export default {
         this.error = false
         // on appelle la méthode de sauvegarde de la donnée du store
         if (this.isNewClient) {
-          console.log('create', this.client)
           this.createClient(this.client)
         } else {
-          console.log('update', this.client)
           this.updateClient(this.client)
         }
         // on revient sur la page précédente
